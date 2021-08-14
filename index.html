@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>YOU (Your Own Universal)</title>
+  
+  <link rel="shortcut icon" href="images/YOU_Leaf.JPG" />
+  <link rel="stylesheet" href="vendors/iconfonts/font-awesome/css/all.min.css">
+  <link rel="stylesheet" href="vendors/css/vendor.bundle.base.css">
+  <link rel="stylesheet" href="vendors/css/vendor.bundle.addons.css">
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.min.css">
+  <link rel="stylesheet" href="css/style.css">
+
+  <script src="https://unpkg.com/read-excel-file@4.x/bundle/read-excel-file.min.js"></script>
+  <script src="https://cdn.amcharts.com/lib/4/core.js"></script>
+  <script src="https://cdn.amcharts.com/lib/4/charts.js"></script>
+  <script src="https://cdn.amcharts.com/lib/4/plugins/regression.js"></script> 
+  <script src="https://cdn.amcharts.com/lib/4/themes/animated.js"></script>
+  <script src="https://cdn.amcharts.com/lib/4/themes/dataviz.js"></script>
+  <script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
+
+</head>
+<body>
+  <div class="container-scroller">
+    <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row default-layout-navbar">
+      <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
+        <a class="navbar-brand brand-logo" href="index.html"><img src="images/YOU_Logo_Purple.svg" alt="logo"/></a>
+      </div>
+      <div class="navbar-menu-wrapper d-flex align-items-stretch">
+        <ul class="navbar-nav navbar-nav-right">
+          <li class="nav-item d-lg-flex">
+            <a class="nav-link" href="#">
+              <button id="inputfilebtn" onclick="document.getElementById('input').click()">Import File</button>
+              <input type="file" id="input" style="display:none">
+            </a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <!-- partial -->
+    <div class="container-fluid page-body-wrapper">
+      <div class="main-panel" style="width: 100%">
+        <div class="content-wrapper">
+          <div class="page-header">
+            <h3 class="page-title">
+              Dashboard
+            </h3>
+          </div>
+          <div class="row grid-margin">
+            <div class="col-12">
+              <div class="card card-statistics">
+                <div class="card-body">
+                  <div class="d-flex flex-column flex-md-row align-items-center justify-content-between">
+                      <div class="col-2"></div>
+                      <div class="statistics-item" style="text-align: -webkit-center;">
+                        <h4>
+                          <i class="icon-sm fa fa-trophy mr-2"></i>
+                          Best
+                        </h4>
+                        <h2 id="id_best_val">0</h2>
+                        <label id="id_best_date" class="badge badge-outline-success badge-pill">0</label>
+                      </div>
+                      <div class="statistics-item" style="text-align: -webkit-center;">
+                        <h4>
+                          <i class="icon-sm fas fa-hourglass-half mr-2"></i>
+                          Average Time
+                        </h4>
+                        <h2 id="id_avg_val">0</h2>
+                        <label id="id_avg_date" class="badge badge-outline-info badge-pill">0</label>
+                      </div>
+                      <div class="statistics-item" style="text-align: -webkit-center;">
+                        <h4>
+                          <i class="icon-sm fa fa-low-vision mr-2"></i>
+                          Lowest
+                        </h4>
+                        <h2 id="id_low_val">0</h2>
+                        <label id="id_low_date" class="badge badge-outline-danger badge-pill">0</label>
+                      </div>
+                      <div class="col-2"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12 grid-margin stretch-card">
+              <div class="card">
+                <div class="card-body" style="padding: 1.0rem;">
+                  <h4 class="card-title">
+                    <i class="fas fa-bezier-curve"></i>
+                    <u><b>Timeline</b></u>
+                  </h4>
+                  <div id="chartdiv">
+                    <div style="height: 100%;position: relative;">
+                      <h3 style="margin: 0;position: absolute;top: 50%;left: 50%;-ms-transform: translate(-50%, -50%);transform: translate(-50%, -50%);"><img src="images/filenotfound.png" alt="Snow" style="" >Import Excel File</h3>
+                    </div>
+                  </div>
+                  <!-- <div id="orders-chart-legend" class="orders-chart-legend"></div> -->
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6 grid-margin stretch-card">
+              <div class="card">
+                <div class="card-body">
+                  <h4 class="card-title">
+                    <i class="fas fa-project-diagram"></i>
+                    <u><b>Linear Regression</b></u>
+                  </h4>
+                  <div id="chartLinearRegression">
+                    <div style="height: 100%;position: relative;">
+                      <h4 style="margin: 0;position: absolute;top: 50%;left: 50%;-ms-transform: translate(-50%, -50%);transform: translate(-50%, -50%);"><img src="images/filenotfound.png" alt="Snow" style="" >Import Excel File</h4>
+                    </div>
+                  </div>
+                  <!-- <canvas id="orders-chart"></canvas>
+                  <div id="orders-chart-legend" class="orders-chart-legend"></div> -->                  
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6 grid-margin stretch-card">
+              <div class="card">
+                <div class="card-body">
+                  <h4 class="card-title">
+                    <i class="fas fa-chart-line"></i>
+                    <u><b>Polynomial Regression</b></u>
+                  </h4>
+                  <div id="chartPolynomialRegression">
+                    <div style="height: 100%;position: relative;">
+                      <h4 style="margin: 0;position: absolute;top: 50%;left: 50%;-ms-transform: translate(-50%, -50%);transform: translate(-50%, -50%);"><img src="images/filenotfound.png" alt="Snow">Import Excel File</h4>
+                    </div>
+                  </div>
+                  <!-- <canvas id="sales-chart"></canvas> -->
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12 grid-margin stretch-card">
+              <div class="card">
+                <div class="card-body">
+                  <h4 class="card-title">
+                    <i class="fas fa-table"></i>
+                    Excel Data
+                  </h4>
+                  <div class="table-responsive">
+                    <table class="table" id="excelTable">
+                      <thead>
+                        <tr>
+                          <th>Date</th>
+                          <th>Input</th>
+                          <th>Max Output</th>
+                        </tr>
+                      </thead>
+                      <tbody id="tbodyid">
+                        <tr>
+                          <td colspan="3" style="text-align: center;"><h4>Import Excel File</h4></td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12">
+              <div class="card">
+                <div class="card-body">
+                  <div class="d-md-flex justify-content-between align-items-center">
+                    <div class="col-md-4"></div>
+                    <div class="d-flex align-items-center">
+                      <button class="btn btn-social-icon btn-linkedin btn-rounded" onclick="window.open('https://www.linkedin.com/in/akshay-zade-4811891a0/', '_blank');">
+                        <i class="fab fa-linkedin-in"></i>
+                      </button>
+                    </div>
+                    <div class="d-flex align-items-center mb-3 mb-md-0">
+                      <button class="btn btn-social-icon btn-google btn-rounded" onclick="window.open('mailto:zadeakshay321@gmail.com', '_blank');">
+                        <i class="fab fa-google-plus-g"></i>
+                      </button>
+                    </div>
+                    <div class="d-flex align-items-center mb-3 mb-md-0">
+                      <button class="btn btn-social-icon btn-github btn-rounded" onclick="window.open('https://github.com/AkshayZade1995/', '_blank');">
+                        <i class="fab fa-github"></i>
+                      </button>
+                    </div>
+                    <div class="col-md-4"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="vendors/js/vendor.bundle.base.js"></script>
+  <script src="vendors/js/vendor.bundle.addons.js"></script>
+  <script src="js/dashboard.js"></script>
+  
+</body>
+</html>
