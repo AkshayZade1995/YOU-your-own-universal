@@ -243,8 +243,8 @@ input.addEventListener('change',function(){
       
       
       Actualdata.push({
-        date:new Date(getYear(data[i][0]),getMonth(data[i][0]),getDay(data[i][0])), value1:data[i][1], value2:data[i][2],
-        previousDate:new Date(getYear(data[i][0]),getMonth(data[i][0]),getDay(data[i][0]))
+        date:new Date(getYear(data[i][0]),getMonth(data[i][0])-1,getDay(data[i][0])), value1:data[i][1], value2:data[i][2],
+        previousDate:new Date(getYear(data[i][0]),getMonth(data[i][0])-1,getDay(data[i][0]))
       });
 
       linearRegressionArray.push({
