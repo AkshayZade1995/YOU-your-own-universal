@@ -14,7 +14,7 @@
 
 ## Requirements
 - Excel Sheet (3 columns - 1. Date (MM/DD/YYYY) Type Date, 2. What is achieved?, 3. What was decided?)
-- Please refer the dataset for reference\
+- Please refer the dataset for reference
   - https://github.com//AkshayZade1995/self-progress-tracker/raw/master/sample-dataset-1.xlsx
   - https://github.com//AkshayZade1995/self-progress-tracker/raw/master/sample-dataset-2.xlsx
   - https://github.com//AkshayZade1995/self-progress-tracker/raw/master/sample-dataset-3.xlsx
